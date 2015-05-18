@@ -276,6 +276,7 @@
 %% Abstract
 \def\abpage{
   \pagestyle{empty}
+  \mbox{}\pagebreak % force blank page before abstract page
   \vspace{-3.5mm}
   \begin{singlespacing} 
   \begin{center} \Large AN ABSTRACT OF THE THESIS OF \end{center}
@@ -531,26 +532,29 @@
   {\normalfont\Large}} % the style
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Table of contents (right side page) (always page `i')
+%   Table of contents 
 %
 
 \def\ps@toca{\def\@oddhead{\vbox to \headheight{
       \centerline{TABLE OF CONTENTS}\hfill \break
       \rm\flushright\protect\underline{Page}\break}}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{TABLE OF CONTENTS}\hfill \break
+      \rm\flushright\protect\underline{Page}\break}}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
 \def\ps@tocb{\def\@evenhead{\vbox to \headheight{
       \centerline{TABLE OF CONTENTS (Continued)}\hfil\break
       \rm\flushright\protect\underline{Page}\break}}
-  \def\@oddhead{}
+  \def\@oddhead{\vbox to \headheight{
+      \centerline{TABLE OF CONTENTS (Continued)}\hfil\break
+      \rm\flushright\protect\underline{Page}\break}}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
 
 \def\tableofcontents{
-  \cleardoublepage
   \vskip 10cm
   \pagestyle{tocb}
   \thispagestyle{toca}
@@ -578,7 +582,9 @@
 \def\ps@lofa{\def\@oddhead{\vbox to \headheight{
       \centerline{LIST OF FIGURES}\break
       \flushleft\underline{Figure}\hfill\underline{Page}\break}}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF FIGURES}\break
+      \flushleft\underline{Figure}\hfill\underline{Page}\break}}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -586,7 +592,9 @@
 \def\ps@lofb{\def\@evenhead{\vbox to \headheight{
       \centerline{LIST OF FIGURES (Continued)}\break
       \flushleft\underline{Figure}\hfill\underline{Page}\break}}
-  \def\@oddhead{}
+  \def\@oddhead{\vbox to \headheight{
+      \centerline{LIST OF FIGURES (Continued)}\break
+      \flushleft\underline{Figure}\hfill\underline{Page}\break}}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -601,7 +609,6 @@
 
 
 \def\listoffigures{
-  \cleardoublepage
   \pagestyle{lofb}
   \thispagestyle{lofa}
 		{\let\footnotemark\relax  % in case one is in the title
@@ -615,7 +622,10 @@
       \centerline{LIST OF TABLES}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF TABLES}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -624,7 +634,10 @@
       \centerline{LIST OF TABLES (Continued)}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\hfill\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@oddhead{\vbox to \headheight{
+      \centerline{LIST OF TABLES (Continued)}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\hfill\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -633,7 +646,10 @@
       \centerline{LIST OF APPENDIX TABLES}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDIX TABLES}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -642,7 +658,10 @@
       \centerline{LIST OF APPENDIX TABLES (Continued)}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\hfill\protect\underline{Page}\break }}
-  \def\@oddhead{}
+  \def\@oddhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDIX TABLES (Continued)}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\hfill\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -651,7 +670,10 @@
       \centerline{LIST OF APPENDIX FIGURES}\hfil\break\strut
       \rm\protect\underline{Figure}\hfill
       \rm\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDIX FIGURES}\hfil\break\strut
+      \rm\protect\underline{Figure}\hfill
+      \rm\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -660,13 +682,15 @@
       \centerline{LIST OF APPENDIX FIGURES(Continued)}\hfil\break\strut
       \rm\protect\underline{Figure}\hfill
       \rm\hfill\protect\underline{Page}\break }}
-  \def\@oddhead{}
+  \def\@oddhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDIX FIGURES(Continued)}\hfil\break\strut
+      \rm\protect\underline{Figure}\hfill
+      \rm\hfill\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
 
 \def\listoftables{
-  \cleardoublepage
   \pagestyle{lotb}
   \thispagestyle{lota}
 		{\let\footnotemark\relax  % in case one is in the title
@@ -675,7 +699,6 @@
 }
 
 \def\listofappendixtables{
-  \cleardoublepage
   \pagestyle{loatb}
   \thispagestyle{loata}
 		{\let\footnotemark\relax  % in case one is in the title
@@ -684,7 +707,6 @@
 }
 
 \def\listofappendixfigures{
-  \cleardoublepage
   \pagestyle{loafb}
   \thispagestyle{loafa}
 		{\let\footnotemark\relax  % in case one is in the title
@@ -715,7 +737,10 @@
       \centerline{LIST OF APPENDICES}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDICES}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
@@ -724,13 +749,15 @@
       \centerline{LIST OF APPENDICES (Continued)}\hfil\break\strut
       \rm\protect\underline{Table}\hfill
       \rm\hfill\protect\underline{Page}\break }}
-  \def\@evenhead{}
+  \def\@evenhead{\vbox to \headheight{
+      \centerline{LIST OF APPENDICES (Continued)}\hfil\break\strut
+      \rm\protect\underline{Table}\hfill
+      \rm\hfill\protect\underline{Page}\break }}
   \def\@oddfoot{}
   \def\@evenfoot{}
 }
 
 \def\listofappendices{
-  \cleardoublepage
   \pagestyle{loab}
   \thispagestyle{loaa}
 		{\let\footnotemark\relax  % in case one is in the title
